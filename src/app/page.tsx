@@ -1,6 +1,7 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Image from 'next/image'
 import './styles.css'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
@@ -10,9 +11,10 @@ export default function Home() {
           Chateá con <span className="text-blue-600">Legisbot</span>,<br />
           tu asesor legal.
         </h1>
-        <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
+        <p className="mt-2 max-w-prose text-zinc-700 sm:text-lg">
           Asesoramiento penal instantáneo con IA.
         </p>
+        <Button className="p-5 mt-4 bg-blue-600">Empezá</Button>
       </div>
       <div className="sm:block mb-5 flex justify-center">
         <Image
