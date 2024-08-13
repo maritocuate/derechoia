@@ -1,0 +1,15 @@
+.legisbot {
+  width: 100px;
+  height: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .legisbot {
+    width: 85px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .legisbot {
+    width: 70px;
+  }
+}
