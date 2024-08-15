@@ -46,14 +46,15 @@ export async function POST() {
           reason: 'DerechoIA',
           external_reference: userId,
           payer_email: user.email,
-          notificacion_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
           auto_recurring: {
             frequency: 1,
             frequency_type: 'months',
             start_date: new Date().toISOString(),
             transaction_amount: 9000,
             currency_id: 'ARS',
+            notification_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
           },
+          notification_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
           back_url: `${process.env.KINDE_SITE_URL}/dashboard`, // http://localhost:3000/settings
           // failure: 'http://localhost:3000/dashboard',
           status: 'active',

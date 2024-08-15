@@ -8,6 +8,7 @@ mercadopago.configure({
 })
 
 export async function POST(request: NextRequest) {
+  console.log('xxx 1 WEBHOOK')
   const body = await request
     .json()
     .then(data => data as { data: { id: string } })
@@ -21,6 +22,7 @@ export async function POST(request: NextRequest) {
     return new NextResponse(`Webhook error: ${error.message}`, { status: 400 })
   }
 
+  console.log('xxx 2', bodyData)
   if (
     payment.response.status !== 'approved' &&
     payment.response.status_detail !== 'accredited'

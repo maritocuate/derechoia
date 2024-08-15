@@ -18,6 +18,7 @@ export const SubscriptionButton = ({
   const onClick = async () => {
     try {
       const { data } = await axios.post('/api/mercadoPago')
+      console.log('-----------')
       console.log(data)
       window.location.href = data.init_point
     } catch (error) {
