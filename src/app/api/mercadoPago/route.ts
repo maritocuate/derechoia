@@ -46,7 +46,7 @@ export async function POST() {
           reason: 'DerechoIA',
           external_reference: userId,
           payer_email: user.email,
-          notificacion_url: 'https://derechoia.vercel.app/api/webhook', // webhook
+          notificacion_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
           auto_recurring: {
             frequency: 1,
             frequency_type: 'months',
@@ -54,7 +54,8 @@ export async function POST() {
             transaction_amount: 9000,
             currency_id: 'ARS',
           },
-          back_url: 'https://derechoia.vercel.app/dashboard', // http://localhost:3000/settings
+          back_url: `${process.env.KINDE_SITE_URL}/dashboard`, // http://localhost:3000/settings
+          // failure: 'http://localhost:3000/dashboard',
           status: 'active',
         }),
       }

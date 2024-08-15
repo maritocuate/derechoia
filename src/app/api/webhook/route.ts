@@ -46,6 +46,7 @@ export async function POST(request: NextRequest) {
   })
 
   if (userSubscription) {
+    console.log('xxxUPDATE')
     await prismadb.userSubscription.update({
       where: {
         userId: payment?.response?.external_reference,
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
       },
     })
   } else {
+    console.log('xxxCREATE')
     await prismadb.userSubscription.create({
       data: {
         userId: payment?.response?.external_reference,
