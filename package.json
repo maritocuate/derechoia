@@ -18,7 +18,9 @@
     "axios": "^1.7.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "lucide-react": "^0.427.0",
+    "mercadopago": "^1.5.17",
     "next": "14.2.5",
     "prisma": "^5.9.1",
     "react": "^18",
@@ -28,6 +30,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/mercadopago": "^1.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
