@@ -1,11 +1,15 @@
-'use client'
-import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { redirect } from 'next/navigation'
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const { isAuthenticated } = getKindeServerSession()
+  if (!(await isAuthenticated())) {
+    redirect('/')
+  }
+
   return (
     <div>
       <h1>Dashboard</h1>
-      <LogoutLink>Logout</LogoutLink>
     </div>
   )
 }
