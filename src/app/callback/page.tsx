@@ -1,18 +1,20 @@
 'use client'
 import axios from 'axios'
-import { redirect, useSearchParams } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Callback() {
   const [subscription, setSubscription] = useState<{ status: string } | null>(
     null
   )
-  const searchParams = useSearchParams()
-  const preapprovalId = searchParams.get('preapproval_id')
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+    const preapprovalId = searchParams.get('preapproval_id')
+
     const fetchSubscription = async () => {
       try {
+        console.log(preapprovalId)
         const { data } = await axios.post('/api/getSubscription', {
           preapproval_id: preapprovalId,
         })
