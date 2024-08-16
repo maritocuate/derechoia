@@ -2,7 +2,6 @@
 
 import { Zap } from 'lucide-react'
 import axios from 'axios'
-import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
 
@@ -13,8 +12,6 @@ interface SubscriptionButtonProps {
 export const SubscriptionButton = ({
   isPro = false,
 }: SubscriptionButtonProps) => {
-  const [loading, setLoading] = useState(false)
-
   const onClick = async () => {
     try {
       const { data } = await axios.post('/api/mercadoPago')
@@ -22,7 +19,7 @@ export const SubscriptionButton = ({
     } catch (error) {
       toast.error('Something went wrong.')
     } finally {
-      setLoading(false)
+      console.log('finally')
     }
   }
 
