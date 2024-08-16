@@ -7,10 +7,12 @@ export default async function Dashboard({
 }: {
   searchParams: Record<string, string | string[] | undefined>
 }) {
-  const { isAuthenticated } = getKindeServerSession()
+  const { isAuthenticated, getUser } = getKindeServerSession()
   if (!(await isAuthenticated())) {
     redirect('/')
   }
+
+  const user = await getUser()
 
   const preapprovalId = searchParams['preapproval_id'] as string
   if (preapprovalId) {
@@ -26,7 +28,8 @@ export default async function Dashboard({
   return (
     <div>
       <h1>Dashboard</h1>
-      <Navbar />
+      {user?.id}
+      {/* <Navbar /> */}
     </div>
   )
 }
