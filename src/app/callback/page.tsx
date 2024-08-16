@@ -1,6 +1,6 @@
 'use client'
 import axios from 'axios'
-import { useSearchParams } from 'next/navigation'
+import { redirect, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Callback() {
@@ -16,8 +16,6 @@ export default function Callback() {
         const { data } = await axios.post('/api/getSubscription', {
           preapproval_id: preapprovalId,
         })
-        console.log('RESPONSE')
-        console.log(data)
         setSubscription(data)
       } catch (error) {
         console.error('Error:', error)
@@ -28,12 +26,12 @@ export default function Callback() {
 
   return (
     <>
-      <div>CALLBACK</div>
+      <div>Subscription Status</div>
       {subscription ? (
         subscription.status !== 'authorized' ? (
           <div>Subscription not authorized :(</div>
         ) : (
-          <div>Subscription authorized :)</div>
+          redirect('/dashboard')
         )
       ) : (
         <div>Loading...</div>
