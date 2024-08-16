@@ -52,10 +52,9 @@ export async function POST() {
             start_date: new Date().toISOString(),
             transaction_amount: 9000,
             currency_id: 'ARS',
-            notification_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
+            // notification_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
           },
-          notification_url: `${process.env.KINDE_SITE_URL}/api/webhook`, // webhook
-          back_url: `${process.env.KINDE_SITE_URL}/dashboard`, // http://localhost:3000/settings
+          back_url: `${process.env.KINDE_SITE_URL}/callback`, // http://localhost:3000/settings
           // failure: 'http://localhost:3000/dashboard',
           status: 'active',
         }),

@@ -11,18 +11,21 @@ export async function POST(request: NextRequest) {
   console.log('xxx 1 WEBHOOK')
   const body = await request
     .json()
-    .then(data => data as { data: { id: string } })
+    .then(data => data as { preapproval_id: string })
 
   // Store body data in a variable
-  const bodyData = body.data
+  const bodyData = body.preapproval_id
   try {
-    const paymentId = Number(bodyData.id)
+    const paymentId = Number(bodyData)
+    console.log('xxx 1/2')
     var payment = await mercadopago.payment.get(paymentId)
   } catch (error: any) {
+    console.log('xxx ERR')
+    console.log(error.message)
     return new NextResponse(`Webhook error: ${error.message}`, { status: 400 })
   }
 
-  console.log('xxx 2', bodyData)
+  console.log('xxxP', payment)
   if (
     payment.response.status !== 'approved' &&
     payment.response.status_detail !== 'accredited'
