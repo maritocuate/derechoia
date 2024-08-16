@@ -9,7 +9,11 @@ export const Navbar = async () => {
     <div className="navbar bg-base-100">
       <div className="flex-1">
         <LogoutButton />
-        {isPro && <div className="badge badge-success">Pro</div>}
+        {isPro ? (
+          <div className="badge badge-success">Pro</div>
+        ) : (
+          <div>no Pro</div>
+        )}
         {/* <SubscriptionButton isPro={isPro} /> */}
       </div>
     </div>
