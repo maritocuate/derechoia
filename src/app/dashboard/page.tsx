@@ -29,7 +29,7 @@ export default async function Dashboard({
     <div>
       <h1>Dashboard</h1>
       {user?.id}
-      {/* <Navbar /> */}
+      <Navbar />
     </div>
   )
 }
