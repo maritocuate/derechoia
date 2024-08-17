@@ -25,13 +25,11 @@ export const checkSubscription = async () => {
     return false
   }
 
-  const subscriptionId = userSubscription.subscriptionId
-  const mercadoPagoCurrentPeriodEnd = new Date(
-    userSubscription.mercadoPagoCurrentPeriodEnd as Date
-  )
-  const isValid =
-    subscriptionId &&
-    mercadoPagoCurrentPeriodEnd.getTime() + DAY_IN_MS > Date.now()
+  const isValid = true
+  /* const isValid =
+    userSubscription.subscriptionId &&
+    userSubscription.mercadoPagoCurrentPeriodEnd!.getTime() + DAY_IN_MS >
+      Date.now() */
 
   return !!isValid
 }
