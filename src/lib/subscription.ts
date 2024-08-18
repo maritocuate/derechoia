@@ -1,14 +1,14 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import prismadb from '@/lib/prismadb'
+/* import prismadb from '@/lib/prismadb'
 
-const DAY_IN_MS = 86_400_000
+const DAY_IN_MS = 86_400_000 */
 export const checkSubscription = async () => {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
   const userId = user?.id
 
   if (!userId) return false
-  return userId
+  return true
   /* if (!userId) {
     return false
   }
