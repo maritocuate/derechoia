@@ -1,7 +1,7 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import prismadb from '@/lib/prismadb'
+import prismadb from './prismadb'
 
-// const DAY_IN_MS = 86_400_000
+const DAY_IN_MS = 86_400_000
 export const checkSubscription = async () => {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
@@ -21,9 +21,7 @@ export const checkSubscription = async () => {
     },
   })
 
-  return true
-
-  /* if (!userSubscription) {
+  if (!userSubscription) {
     return false
   }
 
@@ -32,5 +30,5 @@ export const checkSubscription = async () => {
     userSubscription.mercadoPagoCurrentPeriodEnd!.getTime() + DAY_IN_MS >
       Date.now()
 
-  return !!isValid */
+  return !!isValid
 }
