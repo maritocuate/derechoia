@@ -1,5 +1,5 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-// import prismadb from './prismadb'
+import prismadb from './prismadb'
 
 const DAY_IN_MS = 86_400_000
 export const checkSubscription = async () => {
@@ -11,19 +11,18 @@ export const checkSubscription = async () => {
     return false
   }
 
-  return true
-
-  /* const userSubscription = await prismadb.userSubscription.findUnique({
+  const userSubscription = await prismadb.userSubscription.findUnique({
     where: {
-      userId: userId,
+      userId: '123',
     },
     select: {
       subscriptionId: true,
       mercadoPagoCurrentPeriodEnd: true,
     },
   })
+  return true
 
-  if (!userSubscription) {
+  /*if (!userSubscription) {
     return false
   }
 
