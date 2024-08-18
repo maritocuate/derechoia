@@ -7,7 +7,9 @@ export const checkSubscription = async () => {
   const user = await getUser()
   const userId = user?.id
 
-  if (!userId) {
+  if (!userId) return false
+  return userId
+  /* if (!userId) {
     return false
   }
 
@@ -25,11 +27,10 @@ export const checkSubscription = async () => {
     return false
   }
 
-  const isValid = true
-  /* const isValid =
+  const isValid =
     userSubscription.subscriptionId &&
     userSubscription.mercadoPagoCurrentPeriodEnd!.getTime() + DAY_IN_MS >
-      Date.now() */
+      Date.now()
 
-  return !!isValid
+  return !!isValid */
 }
