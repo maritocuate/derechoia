@@ -15,10 +15,6 @@ export const checkSubscription = async () => {
     where: {
       userId: '123',
     },
-    select: {
-      subscriptionId: true,
-      mercadoPagoCurrentPeriodEnd: true,
-    },
   })
   return true
 
