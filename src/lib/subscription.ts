@@ -13,12 +13,11 @@ export const checkSubscription = async () => {
 
   const userSubscription = await prismadb.userSubscription.findFirst({
     where: {
-      userId: '123',
+      userId: userId,
     },
   })
-  return true
 
-  /*if (!userSubscription) {
+  if (!userSubscription) {
     return false
   }
 
@@ -27,5 +26,5 @@ export const checkSubscription = async () => {
     userSubscription.mercadoPagoCurrentPeriodEnd!.getTime() + DAY_IN_MS >
       Date.now()
 
-  return !!isValid */
+  return !!isValid
 }
