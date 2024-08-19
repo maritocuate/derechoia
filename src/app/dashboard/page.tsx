@@ -2,6 +2,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
 import { Navbar } from '../../../components/Navbar'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import ChatWrapper from './components/chat/ChatWrapper'
 
 export default async function Dashboard({
   searchParams,
@@ -29,8 +30,8 @@ export default async function Dashboard({
   return (
     <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 sm:flex-row sm:text-left">
       <h1>Dashboard</h1>
-      {user?.id}
       <Navbar />
+      <ChatWrapper />
     </MaxWidthWrapper>
   )
 }
