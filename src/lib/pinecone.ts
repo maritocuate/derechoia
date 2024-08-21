@@ -6,13 +6,13 @@ export const getPineconeClient = async () => {
   })
 
   /* await client.createIndex({
-    name: 'quickstart',
-    dimension: 8,
+    name: 'pdfbuddy',
+    dimension: 1536,
     metric: 'euclidean',
     spec: {
       serverless: {
-        cloud: 'aws',
-        region: 'us-west-2',
+        cloud: 'gcp',
+        region: 'gcp-starter',
       },
     },
   }) */
