@@ -14,6 +14,26 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
+  const url = '/api/uploadthing'
+  const formData = new FormData()
+  formData.append('file', '')
+  const handleUpload = async () => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        console.log('File uploaded successfully')
+      } else {
+        console.error('File upload failed')
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error)
+    }
+  }
+
   return (
     <div className="absolute bottom-0 left-0 w-full">
       <div className="mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
@@ -40,7 +60,8 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
                 className="absolute bottom-1.8 right-[8px]"
                 aria-label="send message"
                 onClick={() => {
-                  addMessage()
+                  // addMessage()
+                  handleUpload()
                   textareaRef.current?.focus()
                 }}
                 type="submit"
