@@ -35,5 +35,5 @@ export const POST = async (req: NextRequest) => {
   const results = await vectorStore.similaritySearch(message, 4)
   console.log(results)
 
-  return true
+  return new Response('OK', { status: 200 })
 }
