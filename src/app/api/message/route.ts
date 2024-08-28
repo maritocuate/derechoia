@@ -3,6 +3,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { PineconeStore } from '@langchain/pinecone'
 import { OpenAIEmbeddings } from '@langchain/openai'
 import { NextRequest } from 'next/server'
+import { db } from '@/db'
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json()
@@ -16,7 +17,15 @@ export const POST = async (req: NextRequest) => {
 
   const { message } = body
 
-  const embeddings = new OpenAIEmbeddings({
+  await db.message.create({
+    data: {
+      text: message,
+      isUserMessage: true,
+      userId,
+    },
+  })
+
+  /* const embeddings = new OpenAIEmbeddings({
     openAIApiKey: process.env.OPENAI_API_KEY,
   })
 
@@ -28,7 +37,7 @@ export const POST = async (req: NextRequest) => {
     namespace: 'codigo_penal_1724865652531',
   })
 
-  const results = await vectorStore.similaritySearch(message, 4)
+  const results = await vectorStore.similaritySearch(message, 4) */
 
   return new Response('OK', { status: 200 })
 }
