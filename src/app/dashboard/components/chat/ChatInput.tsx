@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Send } from 'lucide-react'
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { ChatContext } from './ChatContext'
 
 interface ChatInputProps {
@@ -14,8 +14,21 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
+  const MAX_LINES = 10
+  useEffect(() => {
+    const textarea = textareaRef.current
+    if (textarea) {
+      const lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10)
+      const maxHeight = lineHeight * MAX_LINES
+      console.log(lineHeight)
+      textarea.style.height = 'auto'
+      const newHeight = Math.min(textarea.scrollHeight, maxHeight)
+      textarea.style.height = `${newHeight}px`
+    }
+  }, [message])
+
   return (
-    <div className="absolute bottom-0 left-0 w-full">
+    <div className="fixed bottom-0 left-0 w-full">
       <div className="mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
         <div className="relative flex h-full flex-1 items-stretch md:flex-col">
           <div className="relative flex flex-col w-full flex-grow p-4">
@@ -23,8 +36,23 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
               <Textarea
                 rows={1}
                 autoFocus
+                ref={textareaRef}
+                maxLength={2000}
                 onChange={handleInputChange}
                 value={message}
+                onInput={() => {
+                  const textarea = textareaRef.current
+                  if (textarea) {
+                    const lineHeight = parseInt(
+                      getComputedStyle(textarea).lineHeight,
+                      10
+                    )
+                    const maxHeight = lineHeight * MAX_LINES
+                    textarea.style.height = 'auto'
+                    const newHeight = Math.min(textarea.scrollHeight, maxHeight)
+                    textarea.style.height = `${newHeight}px`
+                  }
+                }}
                 onKeyDown={e => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault()
@@ -33,7 +61,12 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
                   }
                 }}
                 placeholder="Escribí tu pregunta..."
-                className="resize-none pr-12 text-base py-3 scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+                className="resize-none p-3 text-base scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+                style={{
+                  paddingRight: '60px',
+                  paddingTop: '18px',
+                  overflowY: 'auto',
+                }}
               />
 
               <Button
