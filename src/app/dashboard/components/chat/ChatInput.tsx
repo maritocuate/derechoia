@@ -20,7 +20,6 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
     if (textarea) {
       const lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10)
       const maxHeight = lineHeight * MAX_LINES
-      console.log(lineHeight)
       textarea.style.height = 'auto'
       const newHeight = Math.min(textarea.scrollHeight, maxHeight)
       textarea.style.height = `${newHeight}px`
