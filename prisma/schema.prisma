@@ -23,4 +23,18 @@ model UserSubscription {
   mercadoPagoSubscriptionId String? @unique @map(name: "mercado_pago_subscription_id")
   mercadoPagoPriceId String? @unique @map(name: "mercado_pago_price_id")
   mercadoPagoCurrentPeriodEnd DateTime? @map(name: "mercado_pago_current_period_end")
+
+  Message Message[]
+}
+
+model Message {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  text          String
+  isUserMessage Boolean
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  userId        String
+  user          UserSubscription @relation(fields: [userId], references: [userId])
+
+  @@index([userId])
 }

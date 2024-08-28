@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fira_Sans as FontSans } from 'next/font/google'
 import { Toaster } from '@/components/ui/toaster'
 import { cn } from '@/lib/utils'
+import Providers from '../components/Providers'
 import './globals.css'
 
 const fontSans = FontSans({
@@ -23,15 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="grainy">
-      <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased grainy',
-          fontSans.variable
-        )}
-      >
-        {children}
-        <Toaster />
-      </body>
+      <Providers>
+        <body
+          className={cn(
+            'min-h-screen bg-background font-sans antialiased grainy',
+            fontSans.variable
+          )}
+        >
+          {children}
+          <Toaster />
+        </body>
+      </Providers>
     </html>
   )
 }

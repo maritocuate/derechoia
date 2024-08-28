@@ -8,7 +8,7 @@ import path from 'path'
 export const POST = async () => {
   try {
     const response = await fetch(
-      `${process.env.KINDE_SITE_URL}/files/codigo_penal.pdf`
+      `https://utfs.io/f/3f10c824-f9a8-4dd7-a712-e5e9e463eb76-biks7y.pdf`
     )
     const arrayBuffer = await response.arrayBuffer()
     const tempFilePath = path.join('/tmp', 'codigo_penal.pdf')
@@ -29,11 +29,20 @@ export const POST = async () => {
       embeddings,
       {
         pineconeIndex,
-        namespace: 'codigo_penal_01',
+        namespace: `codigo_penal_1724865652531`,
       }
     )
 
-    console.log(result)
+    if (result) {
+      console.log('PDF processing and indexing successful')
+      return {
+        success: true,
+        message: 'Data successfully uploaded to Pinecone',
+      }
+    } else {
+      throw new Error('Failed to upload data to Pinecone')
+    }
+
     return result
   } catch (err) {
     console.log(err, 'derechoai: error')

@@ -28,7 +28,7 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
 
   const backupMessage = useRef('')
 
-  /* const { mutate: sendMessage } = useMutation({
+  const { mutate: sendMessage } = useMutation({
     mutationFn: async ({ message }: { message: string }) => {
       const url = '/api/message'
       const response = await fetch(url, {
@@ -45,13 +45,13 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
 
       return response.body
     },
-  }) */
+  })
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.target.value)
   }
 
-  const addMessage = () => console.log('message')
+  const addMessage = () => sendMessage({ message })
 
   return (
     <ChatContext.Provider

@@ -14,12 +14,6 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const uploadFile = async () => {
-    await fetch(`/api/uploadthing`, {
-      method: 'POST',
-    })
-  }
-
   return (
     <div className="absolute bottom-0 left-0 w-full">
       <div className="mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
@@ -46,7 +40,7 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
                 className="absolute bottom-1.8 right-[8px]"
                 aria-label="send message"
                 onClick={() => {
-                  uploadFile()
+                  addMessage()
                   textareaRef.current?.focus()
                 }}
                 type="submit"

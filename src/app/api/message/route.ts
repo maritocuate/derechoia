@@ -16,10 +16,6 @@ export const POST = async (req: NextRequest) => {
 
   const { message } = body
 
-  const file =
-    'https://utfs.io/f/3f10c824-f9a8-4dd7-a712-e5e9e463eb76-biks7y.pdf'
-  if (!file) return new Response('Not found', { status: 404 })
-
   const embeddings = new OpenAIEmbeddings({
     openAIApiKey: process.env.OPENAI_API_KEY,
   })
@@ -29,11 +25,10 @@ export const POST = async (req: NextRequest) => {
 
   const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex,
-    namespace: 'cm01e98h60001p4qfgra9husi',
+    namespace: 'codigo_penal_1724865652531',
   })
 
   const results = await vectorStore.similaritySearch(message, 4)
-  console.log(results)
 
   return new Response('OK', { status: 200 })
 }
