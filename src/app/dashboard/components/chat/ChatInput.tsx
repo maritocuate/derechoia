@@ -64,7 +64,7 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
                 className="resize-none p-3 text-base scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
                 style={{
                   paddingRight: '60px',
-                  paddingTop: '18px',
+                  paddingTop: '16px',
                   overflowY: 'auto',
                 }}
               />
