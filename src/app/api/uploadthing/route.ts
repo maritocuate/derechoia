@@ -35,16 +35,35 @@ export const POST = async () => {
 
     if (result) {
       console.log('PDF processing and indexing successful')
-      return {
-        success: true,
-        message: 'Data successfully uploaded to Pinecone',
-      }
+      return new Response(
+        JSON.stringify({
+          success: true,
+          message: 'Data successfully uploaded to Pinecone',
+        }),
+        {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
     } else {
       throw new Error('Failed to upload data to Pinecone')
     }
-
-    return result
   } catch (err) {
     console.log(err, 'derechoai: error')
+
+    return new Response(
+      JSON.stringify({
+        success: false,
+        message: 'An error occurred while processing the PDF',
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
   }
 }

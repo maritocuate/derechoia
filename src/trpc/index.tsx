@@ -9,7 +9,7 @@ import { getUserSubscriptionPlan, stripe } from '@/lib/stripe'
 import { PLANS } from '@/config/stripe' */
 
 export const appRouter = router({
-  authCallback: publicProcedure.query(async () => {
+  /* authCallback: publicProcedure.query(async () => {
     const { getUser } = getKindeServerSession()
     const user = await getUser()
 
@@ -98,34 +98,33 @@ export const appRouter = router({
       if (!file) return { status: 'PENDING' as const }
 
       return { status: file.uploadStatus }
-    }),
+    }), */
 
-  getFileMessages: privateProcedure
+  getUserMessages: privateProcedure
     .input(
       z.object({
         limit: z.number().min(1).max(100).nullish(),
         cursor: z.string().nullish(),
-        fileId: z.string(),
+        userId: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {
       const { userId } = ctx
-      const { fileId, cursor } = input
+      const { cursor } = input
       const limit = input.limit ?? INFINITE_QUERY_LIMIT
 
-      const file = await db.file.findFirst({
+      const dbUser = await db.userSubscription.findFirst({
         where: {
-          id: fileId,
           userId,
         },
       })
 
-      if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
+      if (!dbUser) throw new TRPCError({ code: 'NOT_FOUND' })
 
       const messages = await db.message.findMany({
         take: limit + 1,
         where: {
-          fileId,
+          userId,
         },
         orderBy: {
           createdAt: 'desc',
