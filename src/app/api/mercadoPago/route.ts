@@ -64,7 +64,6 @@ export async function POST() {
     const data = await response.json()
     return new NextResponse(JSON.stringify(data), { status: 200 })
   } catch (error) {
-    console.log('[MERCADOPAGO_ERROR]', error)
     return new NextResponse('Internal error', { status: 500 })
   }
 }

@@ -69,6 +69,7 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
               />
 
               <Button
+                disabled={isLoading || isDisabled}
                 className="absolute bottom-1.8 right-[8px]"
                 aria-label="send message"
                 onClick={() => {

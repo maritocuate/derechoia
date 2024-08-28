@@ -51,7 +51,7 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
     setMessage(event.target.value)
   }
 
-  const addMessage = () => sendMessage({ message })
+  const addMessage = () => message && sendMessage({ message })
 
   return (
     <ChatContext.Provider

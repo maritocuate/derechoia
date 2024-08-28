@@ -14,7 +14,6 @@ export default function Callback() {
 
     const fetchSubscription = async () => {
       try {
-        console.log(preapprovalId)
         const { data } = await axios.post('/api/getSubscription', {
           preapproval_id: preapprovalId,
         })
