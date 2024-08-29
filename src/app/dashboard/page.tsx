@@ -1,7 +1,6 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
 import { Navbar } from '../../../components/Navbar'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ChatWrapper from './components/chat/ChatWrapper'
 
 export default async function Dashboard({
