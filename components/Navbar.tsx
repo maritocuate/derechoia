@@ -6,7 +6,7 @@ export const Navbar = async () => {
   const isPro = await checkSubscription()
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="fixed top-0 navbar bg-base-100">
       <div className="flex-1">
         <LogoutButton />
         {isPro && <p className="text-xs">IS PRO</p>}

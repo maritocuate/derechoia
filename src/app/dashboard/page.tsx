@@ -28,10 +28,11 @@ export default async function Dashboard({
   }
 
   return (
-    <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 sm:flex-row sm:text-left">
-      <h1>Dashboard</h1>
+    <>
       <Navbar />
-      <ChatWrapper />
-    </MaxWidthWrapper>
+      <div className="flex position-absolute w-screen h-screen">
+        <ChatWrapper />
+      </div>
+    </>
   )
 }
