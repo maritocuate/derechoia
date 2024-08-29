@@ -32,7 +32,7 @@ export default async function Dashboard({
       <Navbar />
 
       {userId && (
-        <div className="flex position-absolute w-screen h-screen">
+        <div className="flex w-screen h-screen flex-col">
           <ChatWrapper userId={userId} />
         </div>
       )}
