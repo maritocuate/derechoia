@@ -3,10 +3,14 @@ import { ChatContextProvider } from './ChatContext'
 import ChatInput from './ChatInput'
 import Messages from './Messages'
 
-const ChatWrapper = () => {
+interface ChatWrapperProps {
+  userId: string
+}
+
+const ChatWrapper = ({ userId }: ChatWrapperProps) => {
   return (
-    <ChatContextProvider fileId={'1'}>
-      <Messages fileId={'1'} />
+    <ChatContextProvider userId={userId}>
+      <Messages userId={userId} />
       <ChatInput />
     </ChatContextProvider>
   )

@@ -7,16 +7,16 @@ import { ChatContext } from './ChatContext'
 import { useIntersection } from '@mantine/hooks'
 
 interface MessagesProps {
-  fileId: string
+  userId: string
 }
 
-const Messages = ({ fileId }: MessagesProps) => {
+const Messages = ({ userId }: MessagesProps) => {
   const { isLoading: isAiThinking } = useContext(ChatContext)
 
   const { data, isLoading, fetchNextPage } =
     trpc.getUserMessages.useInfiniteQuery(
       {
-        userId: 'kp_6cead41458de418c8c8824c7935c72f6',
+        userId,
         limit: INFINITE_QUERY_LIMIT,
       },
       {

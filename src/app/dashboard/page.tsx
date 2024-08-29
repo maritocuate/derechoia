@@ -14,6 +14,7 @@ export default async function Dashboard({
   }
 
   const user = await getUser()
+  const userId = user?.id
 
   const preapprovalId = searchParams['preapproval_id'] as string
   if (preapprovalId) {
@@ -29,9 +30,12 @@ export default async function Dashboard({
   return (
     <>
       <Navbar />
-      <div className="flex position-absolute w-screen h-screen">
-        <ChatWrapper />
-      </div>
+
+      {userId && (
+        <div className="flex position-absolute w-screen h-screen">
+          <ChatWrapper userId={userId} />
+        </div>
+      )}
     </>
   )
 }
