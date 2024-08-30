@@ -8,7 +8,7 @@ import path from 'path'
 export const POST = async () => {
   try {
     const response = await fetch(
-      `https://utfs.io/f/3f10c824-f9a8-4dd7-a712-e5e9e463eb76-biks7y.pdf`
+      `http://www.saij.gob.ar/docs-f/dossier-f/accidentes_transito.pdf`
     )
     const arrayBuffer = await response.arrayBuffer()
     const tempFilePath = path.join('/tmp', 'codigo_penal.pdf')
@@ -29,7 +29,7 @@ export const POST = async () => {
       embeddings,
       {
         pineconeIndex,
-        namespace: `codigo_penal_1724865652531`,
+        namespace: `accidentes_transito`,
       }
     )
 

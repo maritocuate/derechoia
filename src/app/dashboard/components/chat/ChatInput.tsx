@@ -26,6 +26,17 @@ export default function ChatInput({ isDisabled }: ChatInputProps) {
     }
   }, [message])
 
+  /* const uploadFile = async () => {
+    const result = await fetch('/api/uploadthing', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    console.log(result)
+  } */
+
   return (
     <div className="position-relative bottom-0 left-0 w-full">
       <div className="mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">

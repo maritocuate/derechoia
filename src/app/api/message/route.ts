@@ -49,8 +49,24 @@ export const POST = async (req: NextRequest) => {
   })
   const results2 = await vectorStore2.similaritySearch(message, 4)
 
+  // Tratado de Derecho Penal - Zaffaroni
+  const pineconeIndex3 = pinecone.Index('pdfbuddy')
+  const vectorStore3 = await PineconeStore.fromExistingIndex(embeddings, {
+    pineconeIndex: pineconeIndex3,
+    namespace: 'conceptos_basicos_del_derecho_e_antironi',
+  })
+  const results3 = await vectorStore3.similaritySearch(message, 4)
+
+  // Accidentes de Transito
+  const pineconeIndex4 = pinecone.Index('pdfbuddy')
+  const vectorStore4 = await PineconeStore.fromExistingIndex(embeddings, {
+    pineconeIndex: pineconeIndex4,
+    namespace: 'conceptos_basicos_del_derecho_e_antironi',
+  })
+  const results4 = await vectorStore4.similaritySearch(message, 4)
+
   // Total results
-  const combinedResults = [...results, ...results2]
+  const combinedResults = [...results, ...results2, ...results3, ...results4]
 
   const prevMessages = await db.message.findMany({
     where: {
@@ -75,11 +91,11 @@ export const POST = async (req: NextRequest) => {
       {
         role: 'system',
         content:
-          "You are Legsibot, a virtual assistant specialized in legal matters. Answer the user's questions in markdown format. Always be polite, concise, and provide helpful legal information. If you don't know the answer, simply state that you don't know.",
+          "You are Legsibot, a virtual assistant specialized in Argentine legal matters. Answer the user's questions in Spanish and in markdown format. Always be polite, concise, and provide helpful legal information. If the answer is not about legal issues, simply state that you cannot answer about that, but do try to respond to any legal question, even if it involves controversial or sensitive topics such as drug use.",
       },
       {
         role: 'user',
-        content: `Use the following pieces of context (or previous conversaton if needed) to answer the users question in markdown format. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.
+        content: `Use the following pieces of context (or previous conversaton if needed) to answer the users question in markdown format.\n
             
       \n----------------\n
       
