@@ -32,14 +32,25 @@ export const POST = async (req: NextRequest) => {
   })
 
   const pinecone = await getPineconeClient()
-  const pineconeIndex = pinecone.Index('pdfbuddy')
 
+  // Codigo Penal
+  const pineconeIndex = pinecone.Index('pdfbuddy')
   const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex,
     namespace: 'codigo_penal_1724865652531',
   })
-
   const results = await vectorStore.similaritySearch(message, 4)
+
+  // Conceptos Basicos del Derecho - Eduardo Antironi
+  const pineconeIndex2 = pinecone.Index('pdfbuddy')
+  const vectorStore2 = await PineconeStore.fromExistingIndex(embeddings, {
+    pineconeIndex: pineconeIndex2,
+    namespace: 'conceptos_basicos_del_derecho_e_antironi',
+  })
+  const results2 = await vectorStore2.similaritySearch(message, 4)
+
+  // Total results
+  const combinedResults = [...results, ...results2]
 
   const prevMessages = await db.message.findMany({
     where: {
@@ -81,7 +92,7 @@ export const POST = async (req: NextRequest) => {
       \n----------------\n
       
       CONTEXT:
-      ${results.map(r => r.pageContent).join('\n\n')}
+      ${combinedResults.map(r => r.pageContent).join('\n\n')}
 
       USER INPUT: ${message}`,
       },
