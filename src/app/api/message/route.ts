@@ -66,7 +66,9 @@ export const POST = async (req: NextRequest) => {
   const results4 = await vectorStore4.similaritySearch(message, 4)
 
   // Total results
-  const combinedResults = [...results, ...results2, ...results3, ...results4]
+  const combinedResults = [
+    ...results /*, ...results2, ...results3, ...results4 */,
+  ]
 
   const prevMessages = await db.message.findMany({
     where: {
