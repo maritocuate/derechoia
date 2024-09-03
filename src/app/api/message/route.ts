@@ -39,7 +39,7 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex,
     namespace: 'codigo_penal_1724865652531',
   })
-  const results = await vectorStore.similaritySearch(message, 4)
+  const results = await vectorStore.similaritySearch(message, 2)
 
   // Conceptos Basicos del Derecho - Eduardo Antironi
   const pineconeIndex2 = pinecone.Index('pdfbuddy')
@@ -47,7 +47,7 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex: pineconeIndex2,
     namespace: 'conceptos_basicos_del_derecho_e_antironi',
   })
-  const results2 = await vectorStore2.similaritySearch(message, 4)
+  const results2 = await vectorStore2.similaritySearch(message, 2)
 
   // Tratado de Derecho Penal - Zaffaroni
   const pineconeIndex3 = pinecone.Index('pdfbuddy')
@@ -55,7 +55,7 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex: pineconeIndex3,
     namespace: 'conceptos_basicos_del_derecho_e_antironi',
   })
-  const results3 = await vectorStore3.similaritySearch(message, 4)
+  const results3 = await vectorStore3.similaritySearch(message, 2)
 
   // Accidentes de Transito
   const pineconeIndex4 = pinecone.Index('pdfbuddy')
@@ -63,7 +63,7 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex: pineconeIndex4,
     namespace: 'conceptos_basicos_del_derecho_e_antironi',
   })
-  const results4 = await vectorStore4.similaritySearch(message, 4)
+  const results4 = await vectorStore4.similaritySearch(message, 2)
 
   // Total results
   const combinedResults = [
