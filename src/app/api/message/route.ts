@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
   const results = await vectorStore.similaritySearch(message, 2)
 
   // Conceptos Basicos del Derecho - Eduardo Antironi
-  const pineconeIndex2 = pinecone.Index('pdfbuddy')
+  /* const pineconeIndex2 = pinecone.Index('pdfbuddy')
   const vectorStore2 = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex: pineconeIndex2,
     namespace: 'conceptos_basicos_del_derecho_e_antironi',
@@ -63,7 +63,7 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex: pineconeIndex4,
     namespace: 'conceptos_basicos_del_derecho_e_antironi',
   })
-  const results4 = await vectorStore4.similaritySearch(message, 2)
+  const results4 = await vectorStore4.similaritySearch(message, 2) */
 
   // Total results
   const combinedResults = [
@@ -77,7 +77,7 @@ export const POST = async (req: NextRequest) => {
     orderBy: {
       createdAt: 'asc',
     },
-    take: 6,
+    take: 3,
   })
 
   const formattedPrevMessages = prevMessages.map(msg => ({
