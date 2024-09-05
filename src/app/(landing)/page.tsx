@@ -15,8 +15,8 @@ export default async function Home() {
   return (
     <>
       <Seo metaRobots="index" url="https://legisbot.com.ar" />
-      <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40">
-        <div className="flex justify-between sm:flex-row sm:text-left">
+      <MaxWidthWrapper className="mb-12 mt-20">
+        <div className="flex justify-between flex-col-reverse sm:flex-row sm:text-left">
           <div>
             <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
               Chateá con <span className="text-blue-600">Legisbot</span>,<br />
@@ -46,7 +46,7 @@ export default async function Home() {
               </Link>
             )}
           </div>
-          <div className="sm:block mb-5 flex justify-center">
+          <div className="flex justify-center sm:block mb-5">
             <Image
               src="/images/legisbot.png"
               alt="Legisbot"
