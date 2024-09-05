@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function ImageLogo() {
   return (
-    <div className="sm:block mb-5 flex justify-center">
+    <div className="flex justify-center sm:block mb-5">
       <Image
         src="/images/legisbot.png"
         alt="Legisbot"
