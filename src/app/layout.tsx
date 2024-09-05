@@ -12,9 +12,10 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: 'Derecho IA',
+  title:
+    'Legisbot, tu asesor penal argentino. Alimentado con inteligencia artificial.',
   description:
-    'Inteligencia artificial al servicio de la constitución argentina.',
+    'Asesor legal orientado a la constitución argentina con inteligencia artificial.',
 }
 
 export default function RootLayout({
