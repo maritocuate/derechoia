@@ -4,6 +4,7 @@ import Seo from '@/components/Seo'
 import HeadingSection from './components/HeadingSection'
 import ImageSection from './components/ImageSection'
 import FeatureSection from './components/FeatureSection'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <ImageSection />
         <FeatureSection />
       </MaxWidthWrapper>
+      <Footer />
     </>
   )
 }
