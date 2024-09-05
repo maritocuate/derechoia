@@ -3,6 +3,7 @@ import './styles.css'
 import Seo from '@/components/Seo'
 import HeadingSection from './components/HeadingSection'
 import ImageSection from './components/ImageSection'
+import FeatureSection from './components/FeatureSection'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <MaxWidthWrapper className="mb-12 mt-28">
         <HeadingSection />
         <ImageSection />
+        <FeatureSection />
       </MaxWidthWrapper>
     </>
   )
