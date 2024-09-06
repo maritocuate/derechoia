@@ -5,6 +5,7 @@ import HeadingSection from './components/HeadingSection'
 import ImageSection from './components/ImageSection'
 import FeatureSection from './components/FeatureSection'
 import Footer from '@/components/Footer'
+import FaqSection from './components/FaqSection'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <HeadingSection />
         <ImageSection />
         <FeatureSection />
+        <FaqSection />
       </MaxWidthWrapper>
       <Footer />
     </>
